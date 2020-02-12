@@ -248,7 +248,7 @@ if spoon.WinWin then
   hs.hotkey.bind(hyper, 'm', function() spoon.WinWin:moveAndResize('maximize') end)
 
   -- ~Move window between screens.~
-  -- Old method works as well for now, revist this.
+  -- Old method works as well for now, revisit this.
   -- (Woould like to be able to wrap around)
   -- hs.hotkey.bind(hyper, 'Left', function() spoon.WinWin:moveToScreen('left') end )
   -- hs.hotkey.bind(hyper, 'Right', function() spoon.WinWin:moveToScreen('right') end )
@@ -261,6 +261,15 @@ Install:andUse('PasswordGenerator', {
   config = {
     password_length = 32,
   },
+})
+
+-- Reload config on file change
+-- and when pressing Hyper+r
+Install:andUse('ReloadConfiguration', {
+  hotkeys = {
+    reloadConfiguration = { hyper, 'r' }
+  },
+  start = true,
 })
 
 -- Optionally load a local file with per-machine settings
@@ -278,15 +287,6 @@ end
 --  / /  / / /___  / / / ___ |
 -- /_/  /_/_____/ /_/ /_/  |_|
 --
--- Reload config on file change (not working)
--- and on pressing Hyper+r (working)
-Install:andUse('ReloadConfiguration', {
-  hotkeys = {
-    reloadConfiguration = { hyper, 'r' }
-  },
-})
-
-
 -- All loaded, let user know
 hs.alert.show('Config loaded')
 
