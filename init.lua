@@ -220,7 +220,11 @@ Install:andUse('ClipboardTool', {
   start = true,
 })
 
-Install:andUse('WinWin')
+Install:andUse('WinWin', {
+  config = {
+    gridparts = 18,
+  }
+})
 
 if spoon.WinWin then
   -- Snap window to grid
@@ -242,6 +246,12 @@ if spoon.WinWin then
 
   -- Maximize for small keyboard
   hs.hotkey.bind(hyper, 'm', function() spoon.WinWin:moveAndResize('maximize') end)
+
+  -- ~Move window between screens.~
+  -- Old method works as well for now, revist this.
+  -- (Woould like to be able to wrap around)
+  -- hs.hotkey.bind(hyper, 'Left', function() spoon.WinWin:moveToScreen('left') end )
+  -- hs.hotkey.bind(hyper, 'Right', function() spoon.WinWin:moveToScreen('right') end )
 end
 
 -- Optionally load a local file with per-machine settings
