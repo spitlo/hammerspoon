@@ -226,6 +226,16 @@ Install:andUse('WinWin', {
   }
 })
 
+Install:andUse('PasswordGenerator', {
+  hotkeys = {
+    paste = { hyper, 'p' }
+  },
+  config = {
+    password_length = 32,
+    password_style = 'xkcd',
+  },
+})
+
 if spoon.WinWin then
   -- Snap window to grid
   hs.hotkey.bind(hyper, 'pad7', function() spoon.WinWin:moveAndResize('cornerNW') end)
