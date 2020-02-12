@@ -232,7 +232,6 @@ Install:andUse('PasswordGenerator', {
   },
   config = {
     password_length = 32,
-    password_style = 'xkcd',
   },
 })
 
@@ -280,21 +279,28 @@ end
 -- /_/  /_/_____/ /_/ /_/  |_|
 --
 -- Reload config on file change
-function reloadConfig(files)
-  doReload = false
-  for _,file in pairs(files) do
-    if file:sub(-4) == '.lua' then
-      doReload = true
-    end
-  end
-  if doReload then
-    hs.reload()
-    if spotifyStatus then
-      spotifyStatus:delete()
-    end
-  end
-end
-hs.pathwatcher.new(os.getenv('HOME') .. '/.hammerspoon/', reloadConfig):start()
+-- function reloadConfig(files)
+--   doReload = false
+--   for _,file in pairs(files) do
+--     if file:sub(-4) == '.lua' then
+--       doReload = true
+--     end
+--   end
+--   if doReload then
+--     hs.reload()
+--     if spotifyStatus then
+--       spotifyStatus:delete()
+--     end
+--   end
+-- end
+-- hs.pathwatcher.new(os.getenv('HOME') .. '/.hammerspoon/', reloadConfig):start()
+Install:andUse('ReloadConfiguration', {
+  hotkeys = {
+    reloadConfiguration = { hyper, 'r' }
+  },
+})
+
+hs.alert.show(hs.configdir)
 
 -- All loaded, let user know
 hs.alert.show('Config loaded')
