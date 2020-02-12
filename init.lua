@@ -198,7 +198,7 @@ hs.loadSpoon('SpoonInstall')
 Install = spoon.SpoonInstall
 
 Install:andUse('ColorPicker', {
-  disable = false,
+  disable = true,
   hotkeys = {
     show = { hyper, 'z' }
   },
@@ -224,15 +224,6 @@ Install:andUse('WinWin', {
   config = {
     gridparts = 18,
   }
-})
-
-Install:andUse('PasswordGenerator', {
-  hotkeys = {
-    paste = { hyper, 'p' }
-  },
-  config = {
-    password_length = 32,
-  },
 })
 
 if spoon.WinWin then
@@ -263,6 +254,15 @@ if spoon.WinWin then
   -- hs.hotkey.bind(hyper, 'Right', function() spoon.WinWin:moveToScreen('right') end )
 end
 
+Install:andUse('PasswordGenerator', {
+  hotkeys = {
+    paste = { hyper, 'p' }
+  },
+  config = {
+    password_length = 32,
+  },
+})
+
 -- Optionally load a local file with per-machine settings
 -- and/or secret API keys etc.
 local localfile = hs.configdir .. '/init-local.lua'
@@ -278,29 +278,14 @@ end
 --  / /  / / /___  / / / ___ |
 -- /_/  /_/_____/ /_/ /_/  |_|
 --
--- Reload config on file change
--- function reloadConfig(files)
---   doReload = false
---   for _,file in pairs(files) do
---     if file:sub(-4) == '.lua' then
---       doReload = true
---     end
---   end
---   if doReload then
---     hs.reload()
---     if spotifyStatus then
---       spotifyStatus:delete()
---     end
---   end
--- end
--- hs.pathwatcher.new(os.getenv('HOME') .. '/.hammerspoon/', reloadConfig):start()
+-- Reload config on file change (not working)
+-- and on pressing Hyper+r (working)
 Install:andUse('ReloadConfiguration', {
   hotkeys = {
     reloadConfiguration = { hyper, 'r' }
   },
 })
 
-hs.alert.show(hs.configdir)
 
 -- All loaded, let user know
 hs.alert.show('Config loaded')
