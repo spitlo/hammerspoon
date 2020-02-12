@@ -1,5 +1,3 @@
-local grid = require 'modules.grid'
--- local clipboard = require 'modules.clipboard'
 local log = hs.logger.new('init', 'verbose')
 
 local hyper = { 'shift', 'cmd', 'alt', 'ctrl' }
@@ -95,22 +93,6 @@ end )
 hs.hotkey.bind(hyper, 'Down', function()
   hs.window.focusedWindow():sendToBack()
 end )
-
--- Snap window to grid
-hs.hotkey.bind(hyper, 'pad7', grid.snap_northwest )
-hs.hotkey.bind(hyper, 'pad8', grid.snap_north )
-hs.hotkey.bind(hyper, 'pad9', grid.snap_northeast )
-
-hs.hotkey.bind(hyper, 'pad4', grid.snap_west )
-hs.hotkey.bind(hyper, 'pad5', grid.snap_center )
-hs.hotkey.bind(hyper, 'pad6', grid.snap_east )
-
-hs.hotkey.bind(hyper, 'pad1', grid.snap_southwest )
-hs.hotkey.bind(hyper, 'pad2', grid.snap_south )
-hs.hotkey.bind(hyper, 'pad3', grid.snap_southeast )
-
--- Maximize for small keyboard
-hs.hotkey.bind(hyper, 'm', grid.maximize_window )
 
 
 ----------------------------------
@@ -237,6 +219,30 @@ Install:andUse('ClipboardTool', {
   },
   start = true,
 })
+
+Install:andUse('WinWin')
+
+if spoon.WinWin then
+  -- Snap window to grid
+  hs.hotkey.bind(hyper, 'pad7', function() spoon.WinWin:moveAndResize('cornerNW') end)
+  hs.hotkey.bind(hyper, 'pad8', function() spoon.WinWin:moveAndResize('halfup') end)
+  hs.hotkey.bind(hyper, 'pad9', function() spoon.WinWin:moveAndResize('cornerNE') end)
+
+  hs.hotkey.bind(hyper, 'pad4', function() spoon.WinWin:moveAndResize('halfleft') end)
+  hs.hotkey.bind(hyper, 'pad5', function() spoon.WinWin:moveAndResize('center') end)
+  hs.hotkey.bind(hyper, 'pad6', function() spoon.WinWin:moveAndResize('halfright') end)
+
+  hs.hotkey.bind(hyper, 'pad1', function() spoon.WinWin:moveAndResize('cornerSW') end)
+  hs.hotkey.bind(hyper, 'pad2', function() spoon.WinWin:moveAndResize('halfdown') end)
+  hs.hotkey.bind(hyper, 'pad3', function() spoon.WinWin:moveAndResize('cornerSE') end)
+
+  -- Increas/decreas size
+  hs.hotkey.bind(hyper, 'pad+', function() spoon.WinWin:moveAndResize('expand') end)
+  hs.hotkey.bind(hyper, 'pad-', function() spoon.WinWin:moveAndResize('shrink') end)
+
+  -- Maximize for small keyboard
+  hs.hotkey.bind(hyper, 'm', function() spoon.WinWin:moveAndResize('maximize') end)
+end
 
 -- Optionally load a local file with per-machine settings
 -- and/or secret API keys etc.
