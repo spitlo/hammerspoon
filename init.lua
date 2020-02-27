@@ -247,6 +247,12 @@ if spoon.WinWin then
   -- Maximize for small keyboard
   hs.hotkey.bind(hyper, 'm', function() spoon.WinWin:moveAndResize('maximize') end)
 
+  -- -- Move window
+  hs.hotkey.bind(hyper, 'j', function() spoon.WinWin:stepMove('left') end)
+  hs.hotkey.bind(hyper, 'l', function() spoon.WinWin:stepMove('right') end)
+  hs.hotkey.bind(hyper, 'i', function() spoon.WinWin:stepMove('up') end)
+  hs.hotkey.bind(hyper, 'k', function() spoon.WinWin:stepMove('down') end)
+
   -- ~Move window between screens.~
   -- Old method works as well for now, revisit this.
   -- (Woould like to be able to wrap around)
@@ -264,13 +270,21 @@ Install:andUse('PasswordGenerator', {
 })
 
 -- Reload config on file change
--- and when pressing Hyper+r
+-- and when pressing Hyper + r
 Install:andUse('ReloadConfiguration', {
   hotkeys = {
     reloadConfiguration = { hyper, 'r' }
   },
   start = true,
 })
+
+-- Show a list of HTTP statuses
+-- when pressing hyper + h
+-- Install:andUse('HttpStatus', {
+--   hotkeys = {
+--     show = { hyper, 'h' }
+--   },
+-- })
 
 -- Optionally load a local file with per-machine settings
 -- and/or secret API keys etc.
