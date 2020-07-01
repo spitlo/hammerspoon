@@ -197,16 +197,16 @@ end )
 hs.loadSpoon('SpoonInstall')
 Install = spoon.SpoonInstall
 
-Install:andUse('ColorPicker', {
-  disable = true,
-  hotkeys = {
-    show = { hyper, 'z' }
-  },
-  config = {
-    show_in_menubar = false,
-  },
-  start = true,
-})
+-- Install:andUse('ColorPicker', {
+--   disable = true,
+--   hotkeys = {
+--     show = { hyper, 'z' }
+--   },
+--   config = {
+--     show_in_menubar = false,
+--   },
+--   start = true,
+-- })
 
 Install:andUse('ClipboardTool', {
   disable = false,
@@ -283,6 +283,14 @@ Install:andUse('ReloadConfiguration', {
 Install:andUse('HttpStatus', {
   hotkeys = {
     show = { hyper, 'h' }
+  },
+})
+
+-- Show a list of Unicode Symbols and
+-- Dingbats when pressing hyper + s
+Install:andUse('Symbats', {
+  hotkeys = {
+    show = { hyper, 's' }
   },
 })
 
