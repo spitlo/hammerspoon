@@ -1,0 +1,47 @@
+[
+  {
+    "name": "HttpStatus",
+    "Command": [],
+    "Constant": [],
+    "Constructor": [],
+    "Deprecated": [],
+    "Field": [],
+    "Function": [],
+    "Method": [
+      {
+        "def": "HttpStatus:bindHotkeys(mapping)",
+        "desc": "Binds hotkeys for HttpStatus",
+        "doc": "Binds hotkeys for HttpStatus\n\nParameters:\n * mapping - A table containing hotkey objifier/key details for the following item:\n  * show - Display menu",
+        "name": "bindHotkeys",
+        "parameters": [
+          " * mapping - A table containing hotkey objifier/key details for the following item:",
+          "   * show - Display menu"
+        ],
+        "signature": "HttpStatus:bindHotkeys(mapping)",
+        "stripped_doc": "",
+        "type": "Method"
+      }
+    ],
+    "Variable": [],
+    "desc": "Show a list of HTTP statuses. Hitting enter on a choice will send you to the httpstatuses.com website for that entry.",
+    "doc": "",
+    "items": [
+      {
+        "def": "HttpStatus:bindHotkeys(mapping)",
+        "desc": "Binds hotkeys for HttpStatus",
+        "doc": "Binds hotkeys for HttpStatus\n\nParameters:\n * mapping - A table containing hotkey objifier/key details for the following item:\n  * show - Display menu",
+        "name": "bindHotkeys",
+        "parameters": [
+          " * mapping - A table containing hotkey objifier/key details for the following item:",
+          "   * show - Display menu"
+        ],
+        "signature": "HttpStatus:bindHotkeys(mapping)",
+        "stripped_doc": "",
+        "type": "Method"
+      }
+    ],
+    "stripped_doc": "",
+    "submodules": [],
+    "type": "Module"
+  }
+]

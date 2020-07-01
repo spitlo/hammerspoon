@@ -280,11 +280,11 @@ Install:andUse('ReloadConfiguration', {
 
 -- Show a list of HTTP statuses
 -- when pressing hyper + h
--- Install:andUse('HttpStatus', {
---   hotkeys = {
---     show = { hyper, 'h' }
---   },
--- })
+Install:andUse('HttpStatus', {
+  hotkeys = {
+    show = { hyper, 'h' }
+  },
+})
 
 -- Optionally load a local file with per-machine settings
 -- and/or secret API keys etc.
