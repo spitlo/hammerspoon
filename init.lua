@@ -21,13 +21,17 @@ function ifRunning(application, code)
 end
 
 function indexOf(table, value, valName)
-    for k, v in ipairs(table) do
-      if valName then
-        if v[valName] == value[valName] then return k end
-      else
-        if v == value then return k end
-      end
+  for k, v in ipairs(table) do
+    if valName then
+      if v[valName] == value[valName] then return k end
+    else
+      if v == value then return k end
     end
+  end
+end
+
+function openApplication(name)
+  hs.application.launchOrFocus(name)
 end
 
 function secondsToClock(seconds)
@@ -94,6 +98,11 @@ hs.hotkey.bind(hyper, 'Down', function()
   hs.window.focusedWindow():sendToBack()
 end )
 
+
+-- Open or focus applications with keyboard shortcuts
+hs.hotkey.bind(hyper, 'n', function()
+  openApplication('nvAlt')
+end )
 
 ----------------------------------
 --     ___   __  ______  ________
