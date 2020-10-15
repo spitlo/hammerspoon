@@ -95,9 +95,12 @@ end )
 --  / ___ / /_/ / /_/ // // /_/ /
 -- /_/  |_\____/_____/___/\____/
 --
-local spotifyVolume = 100
+local spotifyVolume
 local oldSpotifyVolume
-ok, spotifyVolume = hs.applescript('tell application "Spotify" to sound volume as string')
+ok, spotifyVolume = hs.applescript(ifRunning('Spotify', 'tell application "Spotify" to sound volume as string'))
+if not ok then
+  spotifyVolume = 100
+end
 
 hs.hotkey.bind(hyper, 'f4', function()
   hs.spotify.displayCurrentTrack()
