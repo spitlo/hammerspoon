@@ -126,10 +126,10 @@ end
 ---  * direction - A string specifying the direction, valid strings are: `left`, `right`, `up`, `down`.
 ---
 --- Notes:
---- * If window gravitates to the right, `right` and `left` grows and shrinks the window on the left border.
+--- * If window gravitates to the right, `right` and `left` expands and shrinks the window on the left border.
 --- * If window is more to the left, it resizes on the right border.
 --- * The same principal applies to `up` and `down`.
---- * When a window is full width or full height, it will shrink/grow in the 'direction' direction.
+--- * When a window is full width or full height, it will shrink/expand in the 'direction' direction.
 function obj:smartStepResize(direction)
     local cwin = hs.window.focusedWindow()
     if cwin then
