@@ -263,10 +263,10 @@ if spoon.WinWin then
   hs.hotkey.bind(hyper, 'k', function() spoon.WinWin:stepMove('down') end)
 
   -- -- Resize window
-  hs.hotkey.bind(hyper, 'left', function() spoon.WinWin:stepResize('left') end)
-  hs.hotkey.bind(hyper, 'right', function() spoon.WinWin:stepResize('right') end)
-  hs.hotkey.bind(hyper, 'up', function() spoon.WinWin:stepResize('up') end)
-  hs.hotkey.bind(hyper, 'down', function() spoon.WinWin:stepResize('down') end)
+  hs.hotkey.bind(hyper, 'left', function() spoon.WinWin:smartStepResize('left') end)
+  hs.hotkey.bind(hyper, 'right', function() spoon.WinWin:smartStepResize('right') end)
+  hs.hotkey.bind(hyper, 'up', function() spoon.WinWin:smartStepResize('up') end)
+  hs.hotkey.bind(hyper, 'down', function() spoon.WinWin:smartStepResize('down') end)
 
   -- ~Move window between screens.~
   -- Old method works as well for now, revisit this.
