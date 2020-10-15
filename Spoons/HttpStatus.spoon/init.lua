@@ -1,5 +1,6 @@
 --- === HttpStatus ===
 ---
+--- Easily find the code or name for HTTP statuses
 
 local obj={}
 obj.__index = obj
@@ -10,11 +11,6 @@ obj.version = '0.1'
 obj.author = 'James Doyle <james2doyle@gmail.com>'
 obj.homepage = 'https://gist.github.com/james2doyle/8cec2b2693f7909b36587327a85055d5'
 obj.license = '?'
-
---- HttpStatus.logger
---- Variable
---- Logger object used within the Spoon. Can be accessed to set the default log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new('HttpStatus')
 
 --Array to store the statuses
 local http_status_codes = {}
