@@ -1,8 +1,6 @@
 local log = hs.logger.new('init', 'verbose')
 
 local hyper = { 'shift', 'cmd', 'alt', 'ctrl' }
-local speaker_device = 'Built-in Output'
-local headphone_device = 'DisplayPort'
 
 
 ----------------------------------
@@ -84,25 +82,11 @@ hs.hotkey.bind( { 'shift', 'alt' }, 'Tab', function()
   windowFlipper('prev')
 end )
 
--- Send window to different screens
--- hs.hotkey.bind(hyper, 'Left', function()
---   hs.window.focusedWindow():moveOneScreenWest()
--- end )
--- hs.hotkey.bind(hyper, 'Right', function()
---   hs.window.focusedWindow():moveOneScreenEast()
--- end )
--- hs.hotkey.bind(hyper, 'Up', function()
---   hs.window.focusedWindow():toggleFullScreen()
--- end )
--- hs.hotkey.bind(hyper, 'Down', function()
---   hs.window.focusedWindow():sendToBack()
--- end )
-
-
 -- Open or focus applications with keyboard shortcuts
 hs.hotkey.bind(hyper, 'n', function()
   openApplication('nvAlt')
 end )
+
 
 ----------------------------------
 --     ___   __  ______  ________
@@ -115,15 +99,6 @@ local spotifyVolume = 100
 local oldSpotifyVolume
 ok, spotifyVolume = hs.applescript('tell application "Spotify" to sound volume as string')
 
--- For now, use this
--- hs.hotkey.bind(hyper, 'f6', toggle_audio_output )
--- But in the future, try to use fnutils.cycle to cycle through the table of audio devices returned by hs.audiodevice.allOutputDevices()
--- local soundDeviceCycler = hs.fnutils.cycle( hs.audiodevice.allOutputDevices() )
--- hs.hotkey.bind(hyper, 'f6', function()
---   hs.alert.show( hs.audiodevice.current().name )
---   -- local pelle = soundDeviceCycler()
---   -- hs.alert.show( pelle )
--- end )
 hs.hotkey.bind(hyper, 'f4', function()
   hs.spotify.displayCurrentTrack()
 end )
@@ -179,21 +154,6 @@ hs.hotkey.bind(hyper, 'f12', function()
   end
 end )
 
--- local spotifyStatus = hs.menubar.new()
--- spotifyStatus:setMenu(
---   {
---     { title = 'Track info', fn = function() hs.spotify.displayCurrentTrack() end },
---     { title = '-' },
---     { title = 'disabled item', disabled = true },
---     { title = 'checked item', checked = true },
---   }
--- )
--- function setSpotifyStatusDisplay()
---   spotifyStatus:setTitle( tostring(hs.spotify.getCurrentArtist()) .. ' - ' .. tostring(hs.spotify.getCurrentTrack()) )
--- end
--- local spotifyPoller = hs.timer.new(5, setSpotifyStatusDisplay)
--- spotifyPoller:start()
-
 
 ----------------------------------
 --    _____ ____  ____  ____  _   _______
@@ -205,17 +165,6 @@ end )
 -- Load some spoons
 hs.loadSpoon('SpoonInstall')
 Install = spoon.SpoonInstall
-
--- Install:andUse('ColorPicker', {
---   disable = true,
---   hotkeys = {
---     show = { hyper, 'z' }
---   },
---   config = {
---     show_in_menubar = false,
---   },
---   start = true,
--- })
 
 Install:andUse('ClipboardTool', {
   disable = false,
@@ -267,12 +216,6 @@ if spoon.WinWin then
   hs.hotkey.bind(hyper, 'right', function() spoon.WinWin:smartStepResize('right') end)
   hs.hotkey.bind(hyper, 'up', function() spoon.WinWin:smartStepResize('up') end)
   hs.hotkey.bind(hyper, 'down', function() spoon.WinWin:smartStepResize('down') end)
-
-  -- ~Move window between screens.~
-  -- Old method works as well for now, revisit this.
-  -- (Woould like to be able to wrap around)
-  -- hs.hotkey.bind(hyper, 'Left', function() spoon.WinWin:moveToScreen('left') end )
-  -- hs.hotkey.bind(hyper, 'Right', function() spoon.WinWin:moveToScreen('right') end )
 end
 
 Install:andUse('PasswordGenerator', {
