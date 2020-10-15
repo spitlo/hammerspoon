@@ -85,18 +85,18 @@ hs.hotkey.bind( { 'shift', 'alt' }, 'Tab', function()
 end )
 
 -- Send window to different screens
-hs.hotkey.bind(hyper, 'Left', function()
-  hs.window.focusedWindow():moveOneScreenWest()
-end )
-hs.hotkey.bind(hyper, 'Right', function()
-  hs.window.focusedWindow():moveOneScreenEast()
-end )
-hs.hotkey.bind(hyper, 'Up', function()
-  hs.window.focusedWindow():toggleFullScreen()
-end )
-hs.hotkey.bind(hyper, 'Down', function()
-  hs.window.focusedWindow():sendToBack()
-end )
+-- hs.hotkey.bind(hyper, 'Left', function()
+--   hs.window.focusedWindow():moveOneScreenWest()
+-- end )
+-- hs.hotkey.bind(hyper, 'Right', function()
+--   hs.window.focusedWindow():moveOneScreenEast()
+-- end )
+-- hs.hotkey.bind(hyper, 'Up', function()
+--   hs.window.focusedWindow():toggleFullScreen()
+-- end )
+-- hs.hotkey.bind(hyper, 'Down', function()
+--   hs.window.focusedWindow():sendToBack()
+-- end )
 
 
 -- Open or focus applications with keyboard shortcuts
@@ -261,6 +261,12 @@ if spoon.WinWin then
   hs.hotkey.bind(hyper, 'l', function() spoon.WinWin:stepMove('right') end)
   hs.hotkey.bind(hyper, 'i', function() spoon.WinWin:stepMove('up') end)
   hs.hotkey.bind(hyper, 'k', function() spoon.WinWin:stepMove('down') end)
+
+  -- -- Resize window
+  hs.hotkey.bind(hyper, 'left', function() spoon.WinWin:stepResize('left') end)
+  hs.hotkey.bind(hyper, 'right', function() spoon.WinWin:stepResize('right') end)
+  hs.hotkey.bind(hyper, 'up', function() spoon.WinWin:stepResize('up') end)
+  hs.hotkey.bind(hyper, 'down', function() spoon.WinWin:stepResize('down') end)
 
   -- ~Move window between screens.~
   -- Old method works as well for now, revisit this.
