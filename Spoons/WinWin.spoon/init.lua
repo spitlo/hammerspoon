@@ -22,6 +22,42 @@ obj.history = {}
 --- An integer specifying how many gridparts the screen should be divided into. Defaults to 30.
 obj.gridparts = 30
 
+-- Internal method to find out what part of the screen a window gravitates towards (left/right, top/bottom)
+--      +------------------+------------------+
+--      |   +-------------------+             |   Example: The window gravitates towards left and top
+--      |   |              |    |             |
+--      |   |              |    |             |
+--      +-------------------------------------+
+--      |   |              |    |             |
+--      |   +-------------------+             |
+--      |                  |                  |
+--      +------------------+------------------+
+-- Perhaps there is a much easier way to calculate this?
+function obj:_getWindowGravity(window)
+    local screen = window:screen()
+    local sFrame = screen:frame()
+    local wFrame = window:frame()
+
+    local halfWidth = sFrame.w / 2
+    local lMargin = wFrame.x
+    local rMargin = sFrame.w - (lMargin + wFrame.w)
+    local lPart = halfWidth - lMargin
+    local rPart = halfWidth - rMargin
+
+    local halfHeight = sFrame.h / 2
+    local tMargin = wFrame.y
+    local bMargin = sFrame.h - (tMargin + wFrame.h)
+    local tPart = halfHeight - tMargin
+    local bPart = halfHeight - bMargin
+
+    return {
+        left = lPart >= rPart,
+        right = rPart > lPart,
+        top = tPart >= bPart,
+        bottom = bPart > tPart,
+    }
+end
+
 --- WinWin:stepMove(direction)
 --- Method
 --- Move the focused window in the `direction` by on step. The step scale equals to the width/height of one gridpart.
@@ -74,6 +110,85 @@ function obj:stepResize(direction)
             cwin:setSize({w=wsize.w, h=wsize.h-steph})
         elseif direction == "down" then
             cwin:setSize({w=wsize.w, h=wsize.h+steph})
+        else
+            hs.alert.show("Unknown direction: " .. direction)
+        end
+    else
+        hs.alert.show("No focused window!")
+    end
+end
+
+--- WinWin:smartStepResize(direction)
+--- Method
+--- Resize the focused window "smartly" by one step. See notes for our definition of smartly.
+---
+--- Parameters:
+---  * direction - A string specifying the direction, valid strings are: `left`, `right`, `up`, `down`.
+---
+--- Notes:
+--- * If window gravitates to the right, `right` and `left` grows and shrinks the window on the left border.
+--- * If window is more to the left, it resizes on the right border.
+--- * The same principal applies to `up` and `down`.
+--- * When a window is full width or full height, it will shrink/grow in the 'direction' direction.
+function obj:smartStepResize(direction)
+    local cwin = hs.window.focusedWindow()
+    if cwin then
+        local cscreen = cwin:screen()
+        local wsize = cwin:size()
+        local gravity = obj:_getWindowGravity(cwin)
+
+        local sFrame = cscreen:frame()
+        local wFrame = cwin:frame()
+        local isFullWidth = sFrame.w == wFrame.w
+        local isFullHeight = sFrame.h == wFrame.h
+
+        if direction == "left" then
+            if isFullWidth then
+                gravity.left = true
+                gravity.right = false
+            end
+            if gravity.left then
+                obj:stepResize('left')
+            else
+                obj:stepMove('left')
+                obj:stepResize('right')
+            end
+
+        elseif direction == "right" then
+            if isFullWidth then
+                gravity.left = false
+                gravity.right = true
+            end
+            if gravity.right then
+                obj:stepResize('left')
+                obj:stepMove('right')
+            else
+                obj:stepResize('right')
+            end
+
+        elseif direction == "up" then
+            if isFullHeight then
+                gravity.top = true
+                gravity.bottom = false
+            end
+            if gravity.top then
+                obj:stepResize('up')
+            else
+                obj:stepMove('up')
+                obj:stepResize('down')
+            end
+
+        elseif direction == "down" then
+            if isFullHeight then
+                gravity.top = false
+                gravity.bottom = true
+            end
+            if gravity.bottom then
+                obj:stepResize('up')
+                obj:stepMove('down')
+            else
+                obj:stepResize('down')
+            end
         else
             hs.alert.show("Unknown direction: " .. direction)
         end
