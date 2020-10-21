@@ -219,6 +219,10 @@ if spoon.WinWin then
   hs.hotkey.bind(hyper, 'right', function() spoon.WinWin:smartStepResize('right') end)
   hs.hotkey.bind(hyper, 'up', function() spoon.WinWin:smartStepResize('up') end)
   hs.hotkey.bind(hyper, 'down', function() spoon.WinWin:smartStepResize('down') end)
+
+  -- -- Move window between screens
+  hs.hotkey.bind(hyper, 'home', function() spoon.WinWin:moveToScreen('left') end )
+  hs.hotkey.bind(hyper, 'end', function() spoon.WinWin:moveToScreen('right') end )
 end
 
 Install:andUse('PasswordGenerator', {
