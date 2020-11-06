@@ -37,7 +37,7 @@ By smartly, we mean:
 
 Shows a list of http statuses. Opens the relevant status description at httpstatuses.com on select.
 
-Taken from: https://gist.github.com/james2doyle/8cec2b2693f7909b36587327a85055d5
+Adapted from: https://gist.github.com/james2doyle/8cec2b2693f7909b36587327a85055d5
 
 ## Installation
 
