@@ -17,7 +17,7 @@ Adds a method, `smartStepResize`, that resizes the focused window "smartly" by o
 By smartly, we mean:
 
 - If window gravitates to the left, `right` and `left` expands and shrinks the window on the right border (see illustration).
-- If window is more to the left, it resizes on the right border.
+- If window is more to the right, it resizes on the left border.
 - The same principal applies to `up` and `down`.
 - When a window is full width or full height, it will shrink/expand in the 'direction' direction.
 
