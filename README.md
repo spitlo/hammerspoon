@@ -17,7 +17,7 @@ Adds a method, `smartStepResize`, that resizes the focused window "smartly" by o
 By smartly, we mean:
 
 - If window gravitates to the left, `right` and `left` expands and shrinks the window on the right border (see illustration).
-- If window is more to the left, it resizes on the right border.
+- If window is more to the right, it resizes on the left border.
 - The same principal applies to `up` and `down`.
 - When a window is full width or full height, it will shrink/expand in the 'direction' direction.
 
@@ -37,7 +37,7 @@ By smartly, we mean:
 
 Shows a list of http statuses. Opens the relevant status description at httpstatuses.com on select.
 
-Taken from: https://gist.github.com/james2doyle/8cec2b2693f7909b36587327a85055d5
+Adapted from: https://gist.github.com/james2doyle/8cec2b2693f7909b36587327a85055d5
 
 ## Installation
 
@@ -45,3 +45,7 @@ Taken from: https://gist.github.com/james2doyle/8cec2b2693f7909b36587327a85055d5
 $ cd ~
 $ git clone https://github.com/spitlo/hammerspoon .hammerspoon
 ```
+
+## Todo
+
+[] - Shortcuts to connect to ProtonVPN in different countries (Perhaps something like Hyper+V and then another key for the country?)
