@@ -48,4 +48,4 @@ $ git clone https://github.com/spitlo/hammerspoon .hammerspoon
 
 ## Todo
 
-[] - Shortcuts to connect to ProtonVPN in different countries (Perhaps something like Hyper+V and then another key for the country?)
+- [ ] Shortcuts to connect to ProtonVPN in different countries (Perhaps something like Hyper+V and then another key for the country?)
