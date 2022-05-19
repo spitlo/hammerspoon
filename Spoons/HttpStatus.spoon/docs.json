@@ -23,7 +23,7 @@
       }
     ],
     "Variable": [],
-    "desc": "Show a list of HTTP statuses. Hitting enter on a choice will send you to the httpstatuses.com website for that entry.",
+    "desc": "Show a list of HTTP statuses. Hitting enter on a choice will send you to the MDN page for that entry. Bonus: Holding alt (option) while pressing enter takes you to the corresponding HTTP Cats page instead.",
     "doc": "",
     "items": [
       {

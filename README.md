@@ -35,7 +35,7 @@ By smartly, we mean:
 
 ### HttpStatus (from gist)
 
-Shows a list of http statuses. Opens the relevant status description at httpstatuses.com on select.
+Shows a list of http statuses. Opens the relevant status description on MDN on select. Bonus: Holding alt (option) while pressing enter takes you to the corresponding HTTP Cats page instead.
 
 Adapted from: https://gist.github.com/james2doyle/8cec2b2693f7909b36587327a85055d5
 

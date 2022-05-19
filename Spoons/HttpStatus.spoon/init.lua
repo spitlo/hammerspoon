@@ -112,7 +112,13 @@ function showMenu()
   local chooser = hs.chooser.new(function(selection)
     if selection.code ~= nil then
       -- opens the URL in the default application
-      hs.urlevent.openURL('https://httpstatuses.com/' .. selection.code)
+      local mods = hs.eventtap.checkKeyboardModifiers()
+      if mods.alt then
+        urlBase = 'https://http.cat/'
+      else
+        urlBase = 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/'
+      end
+      hs.urlevent.openURL(urlBase .. selection.code)
     end
   end)
 
