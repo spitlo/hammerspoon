@@ -87,7 +87,8 @@ hs.hotkey.bind(hyper, 'n', function()
   openApplication('nvAlt')
 end)
 
--- WIP: Send ctrl+c, arrow up, enter combo (to restart a long-running command in the terminal)
+-- Send 'ctrl+c - arrow up - enter' to restart a long-running command in the terminal.
+-- (Uses the 'releasefn' argument to only send ctrl and not the full hyper combo)
 hs.hotkey.bind(hyper, 'q', nil, function()
   hs.eventtap.keyStroke({ 'ctrl' }, 'c')
   hs.eventtap.keyStroke(nil, 'up')
