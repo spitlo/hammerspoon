@@ -75,18 +75,24 @@ function windowFlipper(direction)
   window:focus()
   hs.alert.show( title )
 end
-hs.hotkey.bind( { 'alt' }, 'Tab', function()
+hs.hotkey.bind({ 'alt' }, 'Tab', function()
   windowFlipper('next')
-end )
-hs.hotkey.bind( { 'shift', 'alt' }, 'Tab', function()
+end)
+hs.hotkey.bind( {'shift', 'alt' }, 'Tab', function()
   windowFlipper('prev')
-end )
+end)
 
 -- Open or focus applications with keyboard shortcuts
 hs.hotkey.bind(hyper, 'n', function()
   openApplication('nvAlt')
-end )
+end)
 
+-- WIP: Send ctrl+c, arrow up, enter combo (to restart a long-running command in the terminal)
+hs.hotkey.bind(hyper, 'q', nil, function()
+  hs.eventtap.keyStroke({ 'ctrl' }, 'c')
+  hs.eventtap.keyStroke(nil, 'up')
+  hs.eventtap.keyStroke(nil, 'return')
+end)
 
 ----------------------------------
 --     ___   __  ______  ________
