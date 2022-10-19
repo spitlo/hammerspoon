@@ -179,7 +179,8 @@ Install = spoon.SpoonInstall
 Install:andUse('ClipboardTool', {
   disable = false,
   hotkeys = {
-    toggle_clipboard = { hyper, 'c' }
+    toggle_clipboard = { hyper, 'c' },
+    clear_history = { hyper, 'x' },
   },
   config = {
     show_in_menubar = true,

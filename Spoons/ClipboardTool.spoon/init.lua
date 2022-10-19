@@ -33,12 +33,12 @@ obj.hist_size = 100
 --- ClipboardTool.max_entry_size
 --- Variable
 --- maximum size of a text entry
-obj.max_entry_size = 4990
+obj.max_entry_size = 10000
 
 --- ClipboardTool.max_size
 --- Variable
---- Whether to check the maximum size of an entry. Defaults to `false`.
-obj.max_size = getSetting('max_size', false)
+--- Whether to check the maximum size of an entry. Defaults to `true`.
+obj.max_size = getSetting('max_size', true)
 
 --- ClipboardTool.honor_ignoredidentifiers
 --- Variable
@@ -113,7 +113,7 @@ local clipboard_history = nil
 
 -- Internal function - persist the current history so it survives across restarts
 function _persistHistory()
-   setSetting("items",clipboard_history)
+   setSetting("items", clipboard_history)
 end
 
 --- ClipboardTool:togglePasteOnSelect()
@@ -171,6 +171,16 @@ function obj:clearLastItem()
    table.remove(clipboard_history, 1)
    _persistHistory()
    last_change = pasteboard.changeCount()
+end
+
+--- ClipboardTool:askAndClear()
+--- Method
+--- Clears the clipboard and history
+function obj:askAndClear()
+   local answer = hs.dialog.blockAlert("Clipboard", "Are you sure you want to clear clipboard history?", "Yes", "No", "NSCriticalAlertStyle")
+   if answer == "Yes" then
+      self.clearAll()
+   end
 end
 
 -- Internal method: deduplicate the given list, and restrict it to the history size limit
@@ -432,6 +442,7 @@ function obj:bindHotkeys(mapping)
    local def = {
       show_clipboard = hs.fnutils.partial(self.showClipboard, self),
       toggle_clipboard = hs.fnutils.partial(self.toggleClipboard, self),
+      clear_history = hs.fnutils.partial(self.askAndClear, self),
    }
    hs.spoons.bindHotkeysToSpec(def, mapping)
    obj.mapping = mapping
