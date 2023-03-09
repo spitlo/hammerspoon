@@ -262,21 +262,20 @@ end
 
 -- Internal method:
 function obj:_showContextMenu(row)
-  print("_showContextMenu row:" .. row)
   point = hs.mouse.getAbsolutePosition()
   local menu = hs.menubar.new(false)
   local menuTable = {
-       { title = "Alle Schnipsel mit Tab einfügen", fn = hs.fnutils.partial(self.pasteAllWithDelimiter, self, row, "\t") },
-       { title = "Alle Schnipsel mit Zeilenvorschub einfügen", fn = hs.fnutils.partial(self.pasteAllWithDelimiter, self, row, "\n") },
+       { title = "Paste all snippets with tab", fn = hs.fnutils.partial(self.pasteAllWithDelimiter, self, row, "\t") },
+       { title = "Paste all snippets with newlines", fn = hs.fnutils.partial(self.pasteAllWithDelimiter, self, row, "\n") },
        { title = "-" },
-       { title = "Eintrag entfernen",   fn = hs.fnutils.partial(self.manageClip, self, row, 0) },
-       { title = "Eintrag an erste Stelle",   fn = hs.fnutils.partial(self.manageClip, self, row, -100)  },
-       { title = "Eintrag nach oben",   fn = hs.fnutils.partial(self.manageClip, self, row, -1)  },
-       { title = "Eintrag nach unten",   fn = hs.fnutils.partial(self.manageClip, self, row, 1) },
-       { title = "Tabelle invertieren",   fn = hs.fnutils.partial(self.manageClip, self, row, 2) },
+       { title = "Remove entry", fn = hs.fnutils.partial(self.manageClip, self, row, 0) },
+       { title = "Move entry to top", fn = hs.fnutils.partial(self.manageClip, self, row, -100)  },
+       { title = "Move entry up", fn = hs.fnutils.partial(self.manageClip, self, row, -1)  },
+       { title = "Move entry down", fn = hs.fnutils.partial(self.manageClip, self, row, 1) },
+       { title = "Invert table", fn = hs.fnutils.partial(self.manageClip, self, row, 2) },
        { title = "-" },
-       { title = "disabled item", disabled = true },
-       { title = "checked item", checked = true },
+       { title = "Disabled item", disabled = true },
+       { title = "Checked item", checked = true },
    }
   menu:setMenu(menuTable)
   menu:popupMenu(point)
