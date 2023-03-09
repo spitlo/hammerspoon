@@ -176,6 +176,15 @@ end )
 hs.loadSpoon('SpoonInstall')
 Install = spoon.SpoonInstall
 
+
+Install:andUse('Caffeine', {
+  disable = false,
+  hotkeys = {
+    toggle = { hyper, '8' },
+  },
+  start = true,
+})
+
 Install:andUse('ClipboardTool', {
   disable = false,
   hotkeys = {
