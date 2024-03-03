@@ -234,7 +234,7 @@ function obj:init()
         {text="⛅ Sun behind cloud (U+26C5)", unicode="U+26C5", subText="Partly cloudy (from ARIB STD B24)"},
         -- {text="⛆ Rain (U+26C6)", unicode="U+26C6", subText="Rainy weather (from ARIB STD B24)"},
         -- {text="⛇ Black snowman (U+26C7)", unicode="U+26C7", subText="Heavy snow (from ARIB STD B24)"},
-        -- {text="⛈ Thunder cloud and rain (U+26C8)", unicode="U+26C8", subText="Thunderstorm (from ARIB STD B24)"},
+        {text="⛈ Thunder cloud and rain (U+26C8)", unicode="U+26C8", subText="Thunderstorm (from ARIB STD B24)"},
         -- {text="⛉ Turned white shogi piece (U+26C9)", unicode="U+26C9", subText="From ARIB STD B24"},
         -- {text="⛊ Turned black shogi piece (U+26CA)", unicode="U+26CA", subText="From ARIB STD B24"},
         -- {text="⛋ White diamond in square (U+26CB)", unicode="U+26CB", subText="From ARIB STD B24"},
@@ -290,6 +290,7 @@ function obj:init()
         -- {text="⛽ Fuel pump (U+26FD)", unicode="U+26FD", subText="Petrol station, gas station (from ARIB STD B24)"},
         -- {text="⛾ Cup on black square (U+26FE)", unicode="U+26FE", subText="Drive-in restaurant (from ARIB STD B24)"},
         -- {text="⛿ White flag with horizontal middle black stripe (U+26FF)", unicode="U+26FF", subText="Japanese self-defense force site (from ARIB STD B24)"},
+        {text="× Multiplication sign (U+00D7)", unicode="U+00D7", subText="Also known as the times sign or the dimension sign"},
 
         -- Dingbats
         {text="✀ Black safety scissors (U+2700)", unicode="U+2700", subText=""},
